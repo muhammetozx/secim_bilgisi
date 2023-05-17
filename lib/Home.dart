@@ -10,61 +10,53 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Container(),
-        ),
-        Expanded(
-          flex: 4,
-          child: MaterialButton(
-            color: Color.fromARGB(255, 134, 204, 177),
-            minWidth: 300,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 250,
+              height: 50,
+              child: OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/AddTutanak');
+                },
+                child: Text("TUTANAK GİR"),
+                style: OutlinedButton.styleFrom(
+                  shape: StadiumBorder(),
+                ),
+              ),
             ),
-            child: Text(
-              'Sonuç Gir',
-              style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
+            SizedBox(height: 30),
+            SizedBox(
+              width: 250,
+              height: 50,
+              child: OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/AddSecmenListesi');
+                },
+                child: Text("SEÇMEN LİSTESİ GİR"),
+                style: OutlinedButton.styleFrom(
+                  shape: StadiumBorder(),
+                ),
+              ),
             ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/GetIn');
-            },
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Container(),
-        ),
-        Expanded(
-          flex: 4,
-          child: MaterialButton(
-            color: Color.fromARGB(255, 202, 43, 32),
-            minWidth: 300,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+            SizedBox(height: 30),
+            SizedBox(
+              width: 250,
+              height: 50,
+              child: OutlinedButton(
+                onPressed: () {},
+                child: Text("WEB PANEL"),
+                style: OutlinedButton.styleFrom(
+                  shape: StadiumBorder(),
+                ),
+              ),
             ),
-            child: Text(
-              'Sonuç Görüntüle',
-              style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/Results');
-            },
-          ),
+          ],
         ),
-        Expanded(
-          flex: 1,
-          child: Container(),
-        ),
-      ],
+      ),
     );
   }
 }

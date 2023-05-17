@@ -1,41 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:telephony/telephony.dart';
 
-class GetIn extends StatefulWidget {
-  const GetIn({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<GetIn> createState() => _GetInState();
+  State<Login> createState() => _LoginState();
 }
 
-class _GetInState extends State<GetIn> {
+class _LoginState extends State<Login> {
   List<TextEditingController> _controllers =
-      List.generate(2, (index) => TextEditingController());
-  Telephony telephony = Telephony.instance;
+      List.generate(3, (index) => TextEditingController());
   bool isPhoneCorrect = false;
-
-  @override
-  void initState() {
-    telephony.listenIncomingSms(
-      onNewMessage: (SmsMessage message) {
-        print(message.address); //+977981******67, sender nubmer
-        print(message.body); //sms text
-        print(message.date); //1659690242000, timestamp
-      },
-      listenInBackground: true,
-    );
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(height: 100),
+          Text(
+            'oylarbizim.org',
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+          ),
           Expanded(
             flex: 2,
             child: Container(),
           ),
+          Text(
+            'Oyuna Sahip Çıkmak İçin',
+            style: TextStyle(fontSize: 15),
+          ),
+          SizedBox(height: 10),
           Expanded(
             flex: 1,
             child: _textFields(_controllers[0], 'Ad Soyad'),
@@ -46,26 +41,26 @@ class _GetInState extends State<GetIn> {
           ),
           Expanded(
             flex: 1,
+            child: _textFields(_controllers[2], 'Onay Kodu'),
+          ),
+          Expanded(
+            flex: 1,
             child: Container(),
           ),
           Expanded(
             flex: 1,
-            child: MaterialButton(
-              color: Colors.redAccent.shade400,
-              minWidth: 300,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+            child: SizedBox(
+              width: 250,
+              height: 50,
+              child: OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Home');
+                },
+                child: Text("GİRİŞ YAP"),
+                style: OutlinedButton.styleFrom(
+                  shape: StadiumBorder(),
+                ),
               ),
-              child: Text(
-                'Sonuç Yükle/Değiştir',
-                style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              onPressed: () {
-                if (isPhoneCorrect) {}
-              },
             ),
           ),
           Expanded(
