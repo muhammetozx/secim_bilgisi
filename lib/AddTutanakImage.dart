@@ -13,90 +13,179 @@ class AddTutanakImage extends StatefulWidget {
 }
 
 class _AddTutanakImageState extends State<AddTutanakImage> {
+  TextEditingController rteController = TextEditingController();
+  TextEditingController kkController = TextEditingController();
   String selectedImagePath = '';
+  bool openImage = false;
+  bool hasImage = false;
 
   @override
   Widget build(BuildContext context) {
+    print(openImage);
+    print(hasImage);
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: () {
-                selectImage();
-                setState(() {});
-              },
-              child: selectedImagePath == ''
-                  ? SizedBox(
-                      height: 200,
-                      width: 200,
-                      child: Image.network(
-                          'https://static.thenounproject.com/png/254260-200.png'),
-                    )
-                  : Image.file(
-                      File(selectedImagePath),
-                      height: 200,
-                      width: 200,
-                      fit: BoxFit.fill,
-                    ),
-            ),
+            openImage && hasImage
+                ? Image.file(
+                    File(selectedImagePath),
+                    height: 200,
+                    width: 200,
+                    fit: BoxFit.fill,
+                  )
+                : Container(),
             SizedBox(height: 20),
-            Text(
-              'Tutanak Yüklemek İçin Tıklayınız.',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              height: 50,
-              width: 250,
-              child: TextField(
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: 'Recep Tayyip Erdoğan',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.5),
-                      borderRadius: BorderRadius.circular(15),
-                    )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50, 0, 50, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/rte.jpg'),
+                    ),
+                  ),
+                  Text(
+                    'Recep Tayyip Erdoğan',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Container(
+                    width: 60,
+                    child: TextField(
+                      onChanged: (value) {},
+                      controller: rteController,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                          labelText: "OY",
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 10),
-            SizedBox(
-              height: 50,
-              width: 250,
-              child: TextField(
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: 'Kemal Kılıçdaroğlu',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.5),
-                      borderRadius: BorderRadius.circular(15),
-                    )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50, 0, 50, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/kk.jpg'),
+                    ),
+                  ),
+                  Text(
+                    'Kemal Kılıçdaroğlu',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Container(
+                    width: 60,
+                    child: TextField(
+                      onChanged: (value) {},
+                      controller: kkController,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                          labelText: "OY",
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20),
-            SizedBox(
-              width: 250,
-              height: 50,
-              child: OutlinedButton(
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: MaterialButton(
+                color: Color.fromRGBO(25, 40, 65, 1),
+                height: 60,
+                minWidth: MediaQuery.of(context).size.width,
                 onPressed: () {
-                  Navigator.popUntil(context, ModalRoute.withName('/Home'));
+                  print('changed Complete');
+                  _textEditingControl();
                 },
-                child: Text("KAYDET"),
-                style: OutlinedButton.styleFrom(
-                  shape: StadiumBorder(),
+                child: Text(
+                  "Gönder",
+                  style: TextStyle(fontSize: 22, color: Colors.white),
                 ),
               ),
             ),
+            openImage
+                ? Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: MaterialButton(
+                      color: Color.fromRGBO(25, 40, 65, 1),
+                      height: 60,
+                      minWidth: MediaQuery.of(context).size.width,
+                      onPressed: () {
+                        selectImage();
+                      },
+                      child: Text(
+                        "Tutanağı Yükle",
+                        style: TextStyle(fontSize: 22, color: Colors.white),
+                      ),
+                    ),
+                  )
+                : Container(),
+            openImage
+                ? Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: MaterialButton(
+                      color: Color.fromRGBO(25, 40, 65, 1),
+                      height: 60,
+                      minWidth: MediaQuery.of(context).size.width,
+                      onPressed: () {
+                        Navigator.popUntil(
+                            context, ModalRoute.withName('/Home'));
+                      },
+                      child: Text(
+                        "Ana Sayfa",
+                        style: TextStyle(fontSize: 22, color: Colors.white),
+                      ),
+                    ),
+                  )
+                : Container(),
             const SizedBox(height: 10),
           ],
         ),
       ),
     );
+  }
+
+  _textEditingControl() {
+    if (rteController.text.isNotEmpty && kkController.text.isNotEmpty) {
+      openImage = true;
+    } else {
+      openImage = false;
+    }
+    setState(() {});
   }
 
   Future selectImage() {
@@ -127,6 +216,7 @@ class _AddTutanakImageState extends State<AddTutanakImage> {
                             print('Image_Path:-');
                             print(selectedImagePath);
                             if (selectedImagePath != '') {
+                              hasImage = true;
                               Navigator.pop(context);
                               setState(() {});
                             } else {
@@ -155,6 +245,7 @@ class _AddTutanakImageState extends State<AddTutanakImage> {
                             print(selectedImagePath);
 
                             if (selectedImagePath != '') {
+                              hasImage = true;
                               Navigator.pop(context);
                               setState(() {});
                             } else {

@@ -8,6 +8,8 @@ import 'package:secim_bilgisi/AddTutanakImage.dart';
 
 import 'package:secim_bilgisi/Login.dart';
 import 'package:secim_bilgisi/Home.dart';
+import 'package:secim_bilgisi/Profile.dart';
+import 'package:secim_bilgisi/Uploaded.dart';
 
 class Routes {
   static Route _route(Widget widget, RouteSettings settings) {
@@ -34,6 +36,10 @@ class Routes {
         return _route(AddSecmenListesi(), settings);
       case '/AddSecmenListesiImage':
         return _route(AddSecmenListesiImage(), settings);
+      case '/Profile':
+        return _route(Profile(), settings);
+      case '/Uploaded':
+        return _route(Uploaded(), settings);
     }
   }
 }

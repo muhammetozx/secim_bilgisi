@@ -47,16 +47,18 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
             ),
             SizedBox(height: 20),
-            SizedBox(
-              width: 250,
-              height: 50,
-              child: OutlinedButton(
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: MaterialButton(
+                color: Color.fromRGBO(25, 40, 65, 1),
+                height: 60,
+                minWidth: MediaQuery.of(context).size.width,
                 onPressed: () {
                   Navigator.popUntil(context, ModalRoute.withName('/Home'));
                 },
-                child: Text("KAYDET"),
-                style: OutlinedButton.styleFrom(
-                  shape: StadiumBorder(),
+                child: Text(
+                  "İlerle",
+                  style: TextStyle(fontSize: 22, color: Colors.white),
                 ),
               ),
             ),
