@@ -1,5 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:flutter/material.dart';
+import 'package:secim_bilgisi/Widgets/AddSecmen/AddSecmenListesiImage.dart';
+import 'package:secim_bilgisi/Widgets/Consts/DecConsts.dart';
+import 'package:secim_bilgisi/Widgets/Consts/Widgets.dart';
 
 class AddSecmenListesi extends StatefulWidget {
   const AddSecmenListesi({super.key});
@@ -11,42 +14,30 @@ class AddSecmenListesi extends StatefulWidget {
 class _AddSecmenListesiState extends State<AddSecmenListesi> {
   TextEditingController ilController = TextEditingController();
   TextEditingController ilceController = TextEditingController();
+  TextEditingController mahalleNoController = TextEditingController();
   TextEditingController okulController = TextEditingController();
-  TextEditingController sandikNoController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Sandık Bilgisi',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
+    return Container(
+      decoration: Generalboxshadowdecoration,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 170,
-            child: Image.network(
-                'https://st.depositphotos.com/1049549/1366/i/600/depositphotos_13667514-stock-photo-man-hand-down-the-ballot.jpg'),
-          ),
-          SizedBox(height: 30),
           CustomDropdown.search(
             hintText: 'İl',
-            items: const ['İzmir', 'İstanbul', 'Ankara', 'Antalya'],
+            items: ['İzmir', 'İstanbul', 'Ankara', 'Antalya'],
             controller: ilController,
           ),
-          SizedBox(height: 20),
+          SizedBox(height: screenHeight / 90),
           CustomDropdown.search(
             hintText: 'İlçe',
-            items: const ['Karşıyaka', 'Bornova', 'Bayraklı', 'Konak'],
+            items: ['Karşıyaka', 'Bornova', 'Bayraklı', 'Konak'],
             controller: ilceController,
           ),
           SizedBox(height: 20),
           CustomDropdown.search(
-            hintText: 'Okul',
-            items: const [
+            hintText: 'Mahalle',
+            items: [
               'Bornova Anadolu Lisesi',
               'Karşıyaka Anadolu Lisesi',
               'Konak Anadolu Lisesi',
@@ -54,10 +45,10 @@ class _AddSecmenListesiState extends State<AddSecmenListesi> {
             ],
             controller: okulController,
           ),
-          SizedBox(height: 20),
+          SizedBox(height: screenHeight / 90),
           CustomDropdown.search(
-            hintText: 'Sandık No',
-            items: const [
+            hintText: 'Okul',
+            items: [
               '1001',
               '1002',
               '1003',
@@ -71,17 +62,23 @@ class _AddSecmenListesiState extends State<AddSecmenListesi> {
               '1011',
               '1012',
             ],
-            controller: sandikNoController,
+            controller: mahalleNoController,
           ),
-          SizedBox(height: 50),
+          SizedBox(height: screenHeight / 40),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: MaterialButton(
               color: Color.fromRGBO(25, 40, 65, 1),
-              height: 60,
+              height: screenHeight / 15,
               minWidth: MediaQuery.of(context).size.width,
               onPressed: () {
-                Navigator.pushNamed(context, '/AddSecmenListesiImage');
+                Widgets.returningWidget = AddSecmenListesiImage(
+                  il: ilController.text,
+                  ilce: ilceController.text,
+                  mahalle: mahalleNoController.text,
+                  okul: okulController.text,
+                );
+                Widgets.SetState();
               },
               child: Text(
                 "İlerle",

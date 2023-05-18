@@ -41,6 +41,7 @@ dependencies:
   image_gallery_saver: ^1.7.1
   gallery_saver: ^2.3.2
   animated_custom_dropdown: ^1.5.0
+  google_fonts: ^4.0.4
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,8 @@ flutter:
   assets:
     - assets/images/rte.jpg
     - assets/images/kk.jpg
+    - assets/images/logo.webp
+    - assets/images/oylarBizimLogo.webp
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

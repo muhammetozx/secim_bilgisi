@@ -1,5 +1,9 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
+import 'package:secim_bilgisi/Widgets/Consts/DecConsts.dart';
+import 'package:secim_bilgisi/Widgets/Consts/Widgets.dart';
+
+import '../Home/Home.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -14,17 +18,11 @@ class _ProfileState extends State<Profile> {
   TextEditingController mahalleController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Profilim',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Container(
+          decoration: Generalboxshadowdecoration,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -42,7 +40,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: screenHeight / 120),
               TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -57,33 +55,34 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: screenHeight / 120),
               CustomDropdown.search(
                 hintText: 'İl',
                 items: ['İzmir', 'İstanbul', 'Ankara', 'Antalya'],
                 controller: ilController,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: screenHeight / 90),
               CustomDropdown.search(
                 hintText: 'İlçe',
                 items: ['Karşıyaka', 'Bornova', 'Bayraklı', 'Konak'],
                 controller: ilceController,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: screenHeight / 90),
               CustomDropdown.search(
                 hintText: 'Mahalle',
                 items: ['İnönü', 'Cumhuriyet', 'Dedebaşı', 'Örnekköy'],
                 controller: mahalleController,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: screenHeight / 90),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: MaterialButton(
                   color: Color.fromRGBO(25, 40, 65, 1),
-                  height: 60,
+                  height: screenHeight / 15,
                   minWidth: MediaQuery.of(context).size.width,
                   onPressed: () {
-                    Navigator.popUntil(context, ModalRoute.withName('/Home'));
+                    Widgets.returningWidget = Home();
+                    Widgets.SetState();
                   },
                   child: Text(
                     "Kaydet",

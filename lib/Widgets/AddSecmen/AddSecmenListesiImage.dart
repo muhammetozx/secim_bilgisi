@@ -4,9 +4,20 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:secim_bilgisi/Widgets/Consts/DecConsts.dart';
 
 class AddSecmenListesiImage extends StatefulWidget {
-  const AddSecmenListesiImage({Key? key}) : super(key: key);
+  String il;
+  String ilce;
+  String mahalle;
+  String okul;
+  AddSecmenListesiImage(
+      {required this.il,
+      required this.ilce,
+      required this.mahalle,
+      required this.okul,
+      Key? key})
+      : super(key: key);
 
   @override
   State<AddSecmenListesiImage> createState() => _AddSecmenListesiImageState();
@@ -17,8 +28,9 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
+      child: Container(
+        decoration: Generalboxshadowdecoration,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -29,32 +41,32 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
               },
               child: selectedImagePath == ''
                   ? SizedBox(
-                      height: 200,
-                      width: 200,
+                      height: screenHeight / 9,
+                      width: screenWidth / 5,
                       child: Image.network(
                           'https://static.thenounproject.com/png/254260-200.png'),
                     )
                   : Image.file(
                       File(selectedImagePath),
-                      height: 200,
-                      width: 200,
+                      height: screenHeight / 9,
+                      width: screenWidth / 5,
                       fit: BoxFit.fill,
                     ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: screenHeight / 90),
             Text(
               'Seçmen Listesi Yüklemek İçin Tıklayınız.',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: screenHeight / 90),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: MaterialButton(
                 color: Color.fromRGBO(25, 40, 65, 1),
-                height: 60,
+                height: screenHeight / 15,
                 minWidth: MediaQuery.of(context).size.width,
                 onPressed: () {
-                  Navigator.popUntil(context, ModalRoute.withName('/Home'));
+                  //
                 },
                 child: Text(
                   "İlerle",
@@ -62,7 +74,7 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: screenHeight / 150),
           ],
         ),
       ),
@@ -77,7 +89,7 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)), //this right here
             child: Container(
-              height: 150,
+              height: screenHeight / 7,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
@@ -87,7 +99,7 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
                       style: TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: screenHeight / 150),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
