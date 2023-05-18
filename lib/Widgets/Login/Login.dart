@@ -36,9 +36,10 @@ class _LoginState extends State<Login> {
               children: [
                 Text(
                   textAlign: TextAlign.center,
-                  """Merhaba,
-Hızlı ve şeffaf seçim sonuçları için
-Türkiye'nin sana ihtiyacı var""",
+                  """Oylar Bizim'e katıl,
+Seçim sonuçlarını ilk öğren.
+
+Geleceğe sahip çıkmak için""",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
                 ),
                 SizedBox(height: screenHeight / 30),

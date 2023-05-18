@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
                     Widgets.SetState();
                   },
                   child: Text(
-                    "Tutanak Giriş",
+                    "Tutanak ve Sonuç Giriş",
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                 ),
@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                     Widgets.SetState();
                   },
                   child: Text(
-                    "Okul Sahiplen",
+                    "Okul Gönüllüsü Ol",
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                 ),
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                     Widgets.SetState();
                   },
                   child: Text(
-                    "Sandık Sahiplen",
+                    "Okul Sahiplendir",
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                 ),

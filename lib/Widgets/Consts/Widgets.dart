@@ -76,7 +76,7 @@ class Widgets {
           Divider(color: Colors.black),
           ListTile(
             title: Text(
-              "Okul Sandıklarım",
+              "Okullarım",
               style: TextStyle(fontSize: 22, color: Colors.white),
             ),
             onTap: () {
@@ -86,7 +86,7 @@ class Widgets {
           Divider(color: Colors.black),
           ListTile(
             title: Text(
-              "Yüklenen Sonuçlarım",
+              "Yüklemelerim",
               style: TextStyle(fontSize: 22, color: Colors.white),
             ),
             onTap: () {
@@ -96,7 +96,7 @@ class Widgets {
           Divider(color: Colors.black),
           ListTile(
             title: Text(
-              "Davet Et ve Okul Sahiplendir",
+              "Arkadaşlarım",
               style: TextStyle(fontSize: 22, color: Colors.white),
             ),
             onTap: () {
