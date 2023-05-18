@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:secim_bilgisi/Widgets/Consts/DecConsts.dart';
+import 'package:secim_bilgisi/Widgets/Consts/Widgets.dart';
+import 'package:secim_bilgisi/Widgets/ShowImage/ShowImage.dart';
 
 class AddSecmenListesiImage extends StatefulWidget {
   String il;
@@ -46,11 +48,23 @@ class _AddSecmenListesiImageState extends State<AddSecmenListesiImage> {
                       child: Image.network(
                           'https://static.thenounproject.com/png/254260-200.png'),
                     )
-                  : Image.file(
-                      File(selectedImagePath),
-                      height: screenHeight / 9,
-                      width: screenWidth / 5,
-                      fit: BoxFit.fill,
+                  : GestureDetector(
+                      onTap: () {
+                        Widgets.returningWidget =
+                            ShowImage(path: selectedImagePath);
+                        Widgets.theonebefore = AddSecmenListesiImage(
+                            il: widget.il,
+                            ilce: widget.ilce,
+                            mahalle: widget.mahalle,
+                            okul: widget.okul);
+                        Widgets.SetState();
+                      },
+                      child: Image.file(
+                        File(selectedImagePath),
+                        height: screenHeight / 9,
+                        width: screenWidth / 5,
+                        fit: BoxFit.fill,
+                      ),
                     ),
             ),
             SizedBox(height: screenHeight / 90),
